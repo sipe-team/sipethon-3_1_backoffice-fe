@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
 import ClubInfo from '~/components/basicInfo/club/ClubInfo';
 import ContentContainer from '~/components/basicInfo/ContentContainer';
 import MainInfo from '~/components/basicInfo/MainInfo';
@@ -8,6 +9,7 @@ import HeaderedContentContainer from '~/components/phase/HeaderedContentContaine
 import PhaseSelector from '~/components/phase/PhaseSelector';
 import ProgramScheduleCard from '~/components/phase/ProgramScheduleCard';
 import RequirementsCard from '~/components/phase/RequirementsCard';
+import { getFaqs, getRequirements } from '~/apis/phase';
 
 const phaseList = [
   { label: '1기', value: '1' },
@@ -17,6 +19,17 @@ const phaseList = [
 
 export default function BasicInfo() {
   const [phase, setPhase] = useState<string>(phaseList[0].value);
+
+  const { data: faqs } = useQuery({
+    queryKey: ['faqs', phase],
+    queryFn: () => getFaqs(Number(phase)),
+    select: (data) => data.faqs || [],
+  });
+
+  const { data: requirements } = useQuery({
+    queryKey: ['requirements', phase],
+    queryFn: () => getRequirements(Number(phase)),
+  });
 
   return (
     <div className="bg-slate-50">
@@ -39,7 +52,12 @@ export default function BasicInfo() {
         <div className="grid grid-cols-2 gap-4">
           <ApplicationDeadlineCard applicationDeadline={[]} />
           <RequirementsCard />
+          {/* <RequirementsCard
+            requirements={requirements?.requirement || ''}
+            description={requirements?.description || []}
+          /> */}
           <ProgramScheduleCard />
+          {/* <FaqListCard faqs={faqs || []} /> */}
           <FaqListCard />
         </div>
       </HeaderedContentContainer>

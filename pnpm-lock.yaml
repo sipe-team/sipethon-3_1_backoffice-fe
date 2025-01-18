@@ -873,7 +873,6 @@ packages:
     peerDependenciesMeta:
       '@types/react':
         optional: true
-
   '@radix-ui/react-tabs@1.1.2':
     resolution: {integrity: sha512-9u/tQJMcC2aGq7KXpGivMm1mgq7oRJKXphDwdypPd/j21j/2znamPU8WkXgnhUaTrSFNIt8XhOyCAupg8/GbwQ==}
   '@radix-ui/react-toast@1.2.4':
@@ -3869,7 +3868,6 @@ snapshots:
       react: 19.0.0
     optionalDependencies:
       '@types/react': 19.0.7
-
   '@radix-ui/react-tabs@1.1.2(@types/react-dom@19.0.3(@types/react@19.0.7))(@types/react@19.0.7)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
     dependencies:
       '@radix-ui/primitive': 1.1.1
