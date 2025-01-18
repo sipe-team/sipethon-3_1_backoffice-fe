@@ -27,7 +27,7 @@ const LoginForm: React.FC = () => {
     // TODO: 인증 로직
     const isAuthenticated = true;
     if (isAuthenticated) {
-      navigate('/dashboard');
+      navigate('/');
     }
   };
 
