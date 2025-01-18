@@ -2,8 +2,11 @@ import React from 'react';
 import { cn } from '~/lib/utils';
 import SipeMainLogo from '../svg/SipeMainLogo';
 import UserProfile from './UserProfile';
+import { useAuthStore } from '~/store/auth';
 
 export function Navbar({ ...props }: React.HTMLAttributes<HTMLElement>) {
+  const { user } = useAuthStore();
+
   return (
     <nav
       className={cn(
@@ -17,7 +20,7 @@ export function Navbar({ ...props }: React.HTMLAttributes<HTMLElement>) {
         </div>
 
         <div className="flex items-center gap-4">
-          <UserProfile name="김철수" image="https://github.com/shadcn.png" />
+          <UserProfile name={user?.name ?? ''} image={user?.imageUrl ?? ''} />
         </div>
       </div>
     </nav>
