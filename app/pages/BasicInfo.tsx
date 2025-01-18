@@ -51,12 +51,14 @@ export default function BasicInfo() {
       >
         <div className="grid grid-cols-2 gap-4">
           <ApplicationDeadlineCard applicationDeadline={[]} />
-          <RequirementsCard
+          <RequirementsCard />
+          {/* <RequirementsCard
             requirements={requirements?.requirement || ''}
             description={requirements?.description || []}
-          />
+          /> */}
           <ProgramScheduleCard />
-          <FaqListCard faqs={faqs || []} />
+          {/* <FaqListCard faqs={faqs || []} /> */}
+          <FaqListCard />
         </div>
       </HeaderedContentContainer>
     </div>
