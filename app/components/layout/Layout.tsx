@@ -21,7 +21,7 @@ export default function Layout({ children, breadcrumbs }: LayoutProps) {
             <SidebarInset>
               <main className="flex-1">
                 {breadcrumbs && <BreadCrumb breadcrumbs={breadcrumbs} />}
-                <div className="p-4">{children}</div>
+                <div>{children}</div>
               </main>
             </SidebarInset>
           </SidebarProvider>
