@@ -1,4 +1,4 @@
-import { ChevronRight, Home, Inbox } from 'lucide-react';
+import { ChevronRight, Home, Inbox, Calendar } from 'lucide-react';
 
 import {
   Sidebar,
@@ -12,14 +12,19 @@ import {
 
 const items = [
   {
-    title: '대시보드',
+    title: '기본 정보 관리',
     url: '/',
     icon: Home,
   },
   {
-    title: '회원 관리',
-    url: '/members',
+    title: '회원 정보 관리',
+    url: '/member',
     icon: Inbox,
+  },
+  {
+    title: '출석 관리',
+    url: '/attendance',
+    icon: Calendar,
   },
 ];
 
