@@ -37,12 +37,6 @@ export default function Member() {
         { label: '회원 정보 관리', path: '/member' },
       ]}
     >
-      <header>
-        <h1>헤더</h1>
-      </header>
-      <aside>
-        <div>사이드바 영역</div>
-      </aside>
       <div className="bg-slate-50 ">
         <nav className="flex items-center justify-between px-8 py-6">
           {/* 검색 영역 */}
