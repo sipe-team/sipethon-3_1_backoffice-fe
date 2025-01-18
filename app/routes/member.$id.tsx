@@ -5,14 +5,24 @@ import Layout from '~/components/layout/Layout';
 import UserInfo from '~/components/member/user-info/UserInfo';
 import { useQuery } from '@tanstack/react-query';
 import { getMemberDetail } from '~/apis/member';
+import { getAttendancePointList } from '~/apis/attendance';
+import { useState } from 'react';
 
 export default function MemberDetailPage({ params }: Route.ComponentProps) {
+  const [selected기수, setSelected기수] = useState('3');
+
   const { data: userInfo } = useQuery({
     queryKey: ['member-detail', params.id],
     queryFn: () => getMemberDetail(Number(params.id)),
   });
 
-  if (!userInfo) return null;
+  const { data: attendancePoint } = useQuery({
+    queryKey: ['attendance'],
+    queryFn: () =>
+      getAttendancePointList({ term: Number(selected기수), memberId: Number(params.id) }),
+  });
+
+  if (!userInfo || !attendancePoint) return null;
   return (
     <Layout
       breadcrumbs={[
@@ -28,7 +38,13 @@ export default function MemberDetailPage({ params }: Route.ComponentProps) {
         </div>
         <div className="flex w-full gap-4">
           <UserInfo userInfo={userInfo} />
-          <활동점수 />
+          <활동점수
+            attendancePoint={attendancePoint}
+            selected기수={selected기수}
+            onChange={(v) => {
+              setSelected기수(v);
+            }}
+          />
         </div>
       </div>
     </Layout>

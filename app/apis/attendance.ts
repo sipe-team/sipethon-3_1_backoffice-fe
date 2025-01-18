@@ -5,12 +5,21 @@ import {
   GenerateQRCodeRequest,
   GetPhaseRequest,
   GetPhaseResponse,
+  AttendancePointRequest,
 } from '~/types/attendance';
 
-const http = axios.create();
+const http = axios.create({
+  baseURL: 'https://backoffice.conects.com',
+  withCredentials: true,
+});
 
-export const getAttendancePointList = async () => {
-  const { data } = await http.get<AttendancePoint>('/api/attendance/points');
+export const getAttendancePointList = async ({ term, memberId }: AttendancePointRequest) => {
+  const { data } = await http.get<AttendancePoint>('/api/attendance/points', {
+    params: {
+      memberId,
+      term,
+    },
+  });
   return data;
 };
 

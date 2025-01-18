@@ -1,7 +1,10 @@
 import axios from 'axios';
 import type { DeleteMemberRequest, Member, UpdateMemberRequest } from '~/types/member';
 
-const http = axios.create();
+const http = axios.create({
+  baseURL: 'https://backoffice.conects.com',
+  withCredentials: true,
+});
 
 export const getMemberDetail = async (id: number) => {
   const { data } = await http.get<Member>(`/api/members/${id}`);
@@ -15,7 +18,7 @@ export const updateMember = async ({
   id: number;
   request: UpdateMemberRequest;
 }) => {
-  await http.post(`/api/members/${id}`, request);
+  await http.put(`/api/members/${id}`, request);
 };
 
 export const deleteMember = async ({
