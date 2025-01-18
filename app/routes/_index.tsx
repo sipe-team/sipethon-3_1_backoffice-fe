@@ -1,17 +1,10 @@
-import { useEffect } from 'react';
-import { useNavigate } from 'react-router';
+import Layout from '~/components/layout/Layout';
+import Dashboard from '~/pages/Dashboard';
 
 export default function Page() {
-  const navigate = useNavigate();
-  const isLoggedIn = false;
-
-  useEffect(() => {
-    if (isLoggedIn) {
-      navigate('/dashboard');
-    } else {
-      navigate('/login');
-    }
-  }, [isLoggedIn, navigate]);
-
-  return null;
+  return (
+    <Layout>
+      <Dashboard />
+    </Layout>
+  );
 }

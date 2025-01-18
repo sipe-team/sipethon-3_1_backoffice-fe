@@ -20,9 +20,16 @@ import {
 } from '~/components/ui/alert-dialog';
 
 import { Input } from '~/components/ui/input';
+import Layout from '~/components/layout/Layout';
+
 export default function Member() {
   return (
-    <>
+    <Layout
+      breadcrumbs={[
+        { label: 'SIPE', path: '/' },
+        { label: '회원 정보 관리', path: '/member' },
+      ]}
+    >
       <header>
         <h1>헤더</h1>
       </header>
@@ -122,6 +129,6 @@ export default function Member() {
       {/* <footer>
         <div>푸터</div>
       </footer> */}
-    </>
+    </Layout>
   );
 }
