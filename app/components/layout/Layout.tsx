@@ -3,6 +3,7 @@ import { SidebarInset, SidebarProvider } from '~/components/ui/sidebar';
 import { AppSidebar } from '~/components/layout/AppSidebar';
 import { Navbar } from '~/components/layout/Navbar';
 import BreadCrumb, { BreadCrumbProps } from './BreadCrumb';
+import AuthGuard from './AuthGuard';
 
 export type LayoutProps = {
   breadcrumbs?: BreadCrumbProps['breadcrumbs'];
@@ -11,19 +12,21 @@ export type LayoutProps = {
 
 export default function Layout({ children, breadcrumbs }: LayoutProps) {
   return (
-    <div className="min-h-screen flex flex-col w-full">
-      <Navbar />
-      <div className="relative">
-        <SidebarProvider>
-          <AppSidebar />
-          <SidebarInset>
-            <main className="flex-1">
-              {breadcrumbs && <BreadCrumb breadcrumbs={breadcrumbs} />}
-              <div className="p-4">{children}</div>
-            </main>
-          </SidebarInset>
-        </SidebarProvider>
+    <AuthGuard>
+      <div className="min-h-screen flex flex-col w-full">
+        <Navbar />
+        <div className="relative">
+          <SidebarProvider>
+            <AppSidebar />
+            <SidebarInset>
+              <main className="flex-1">
+                {breadcrumbs && <BreadCrumb breadcrumbs={breadcrumbs} />}
+                <div>{children}</div>
+              </main>
+            </SidebarInset>
+          </SidebarProvider>
+        </div>
       </div>
-    </div>
+    </AuthGuard>
   );
 }
