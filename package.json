@@ -13,6 +13,10 @@
   },
   "dependencies": {
     "@radix-ui/react-alert-dialog": "^1.1.4",
+<<<<<<< HEAD
+=======
+    "@radix-ui/react-select": "^2.1.4",
+>>>>>>> bb22e89b3af483ec7a3c28f354771b8b4d8c1dd3
     "@radix-ui/react-slot": "^1.1.1",
     "@react-router/fs-routes": "^7.1.2",
     "@react-router/node": "^7.1.2",
