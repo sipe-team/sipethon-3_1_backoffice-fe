@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import {
   Select,
@@ -14,8 +14,28 @@ import dummyMembers from '~/data/member/list/dummyMembers';
 import TableSection from '~/components/member/list/TableSection/TableSection';
 
 export default function Member() {
-  const [term, setTerm] = useState('');
+  const [term, setTerm] = useState(3);
   const [name, setName] = useState('');
+  const [memberInfo, setMemberInfo] = useState([]);
+
+  // rendering되자마자 데이터 호출
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const params: { term: number; name?: string } = {
+        term: Number(term),
+      };
+
+      if (name) {
+        params.name = name;
+      }
+
+      const { data } = await axios.get('https://backoffice.conects.com/api/members', { params });
+      setMemberInfo(data);
+    };
+
+    fetchData();
+  }, []);
 
   const handleSearch = async () => {
     const params: { term: number; name?: string } = {
@@ -26,8 +46,11 @@ export default function Member() {
       params.name = name;
     }
 
-    const response = await axios.get('http://backoffice.conects.com/api/members', { params });
-    console.log('api 호출 응답 확인: ', response);
+    // const response = await axios.get('http://backoffice.conects.com/api/members', { params });
+    const { data } = await axios.get('http://backoffice.conects.com/api/members', { params });
+    if (data) {
+      setMemberInfo(data);
+    }
   };
 
   return (
@@ -44,7 +67,7 @@ export default function Member() {
             <h3 className="sr-only">검색 영역</h3>
             <div className="h-10">
               <h4 className="sr-only">select 영역</h4>
-              <Select onValueChange={setTerm}>
+              <Select onValueChange={setTerm} defaultValue="3">
                 <SelectTrigger className="w-[180px] h-10 bg-white text-neutral-500">
                   <SelectValue placeholder="기수 선택" />
                 </SelectTrigger>
@@ -87,7 +110,8 @@ export default function Member() {
         <main className="px-8 ">
           {/* 테이블 영역 */}
           <h2 className="sr-only">테이블 영역</h2>
-          <TableSection memberInfo={dummyMembers} />
+          <TableSection memberInfo={memberInfo} />
+          {/* <TableSection memberInfo={dummyMembers} /> */}
         </main>
       </div>
       {/* <footer>
