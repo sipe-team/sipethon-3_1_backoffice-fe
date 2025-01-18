@@ -1,6 +1,7 @@
 import { Link } from 'react-router';
-import SipeMainLogo from '~/components/svg/SipeMainLogo';
+
 import LoginForm from '~/components/login/LoginForm';
+import SipeMainLogo from '~/components/svg/SipeMainLogo';
 
 export default function Login() {
   return (

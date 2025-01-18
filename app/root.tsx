@@ -1,14 +1,8 @@
-import {
-  isRouteErrorResponse,
-  Links,
-  Meta,
-  Outlet,
-  Scripts,
-  ScrollRestoration,
-} from 'react-router';
+import type { ReactNode } from 'react';
+import { Links, Meta, Outlet, Scripts, ScrollRestoration } from 'react-router';
 import '~/app.css';
 
-export function Layout({ children }: { children: React.ReactNode }) {
+export function Layout({ children }: { children: ReactNode }) {
   return (
     <html lang="ko">
       <head>
