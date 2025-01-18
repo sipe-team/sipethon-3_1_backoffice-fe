@@ -1,6 +1,7 @@
 import Layout from '~/components/layout/Layout';
+import Attendance from '~/pages/Attendance';
 
-export default function Attendance() {
+export default function AttendancePage() {
   return (
     <Layout
       breadcrumbs={[
@@ -8,7 +9,7 @@ export default function Attendance() {
         { label: '출석 관리', path: '/attendance' },
       ]}
     >
-      출석 관리
+      <Attendance />
     </Layout>
   );
 }
