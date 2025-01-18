@@ -3,6 +3,7 @@ import { Button } from '../ui/button';
 import AlertDialogLayout from './AlertDialogLayout';
 import { Textarea } from '../ui/textarea';
 import { useState } from 'react';
+import { useMutation } from '@tanstack/react-query';
 
 interface Props {
   id: number;
@@ -11,12 +12,20 @@ interface Props {
 
 export default function 회원제명Modal({ id, userName }: Props) {
   const [reason, setReason] = useState('');
+
+  const { mutate } = useMutation({
+    mutationFn: deleteMember,
+  });
+
+  const onDelete = (reason: string) => {
+    mutate({ id, request: { reason } });
+  };
   return (
     <AlertDialogLayout
       title="회원제명"
       trigger={<Button>회원 제명</Button>}
       onConfirm={() => {
-        deleteMember({ id, request: { reason } });
+        onDelete(reason);
       }}
     >
       <div className="flex flex-col gap-2">

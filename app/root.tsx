@@ -1,6 +1,9 @@
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import type { ReactNode } from 'react';
 import { Links, Meta, Outlet, Scripts, ScrollRestoration } from 'react-router';
 import '~/app.css';
+
+const queryClient = new QueryClient();
 
 export function Layout({ children }: { children: ReactNode }) {
   return (
@@ -13,9 +16,11 @@ export function Layout({ children }: { children: ReactNode }) {
         <Links />
       </head>
       <body className="bg-slate-50">
-        {children}
-        <ScrollRestoration />
-        <Scripts />
+        <QueryClientProvider client={queryClient}>
+          {children}
+          <ScrollRestoration />
+          <Scripts />
+        </QueryClientProvider>
       </body>
     </html>
   );

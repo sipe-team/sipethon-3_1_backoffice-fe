@@ -22,7 +22,7 @@ const UserInfo = ({ userInfo }: Props) => {
       <CardContent>
         {userInfo.isDropped && userInfo.reason && (
           <CardDescription>
-            <제명사유 reason={userInfo.reason!} />
+            <제명사유 reason={userInfo.reason} />
           </CardDescription>
         )}
         <div className="flex py-[16px] border-b-[1px] border-b-slate-100">

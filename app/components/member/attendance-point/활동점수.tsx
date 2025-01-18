@@ -5,7 +5,6 @@ import Fire from '~/components/svg/Fire';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '~/components/ui/card';
 import { Select } from '~/components/ui/select';
 import { AttendancePoint, PointHistory } from '~/types/attendance';
-import GreyBox from '../GreyBox';
 
 const dummyPoint: AttendancePoint = {
   points: 65,
