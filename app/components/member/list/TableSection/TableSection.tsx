@@ -46,7 +46,10 @@ export default function TableSection({ memberInfo }: { memberInfo: MemberInfo[] 
     const items = [];
     for (let i = 1; i <= totalPages; i++) {
       items.push(
-        <PaginationItem key={i}>
+        <PaginationItem
+          key={i}
+          className={i === currentPage ? 'bg-gray-200 hover:bg-gray-300' : ''}
+        >
           <PaginationLink href="#" onClick={() => handlePageChange(i)}>
             {i}
           </PaginationLink>
@@ -58,7 +61,7 @@ export default function TableSection({ memberInfo }: { memberInfo: MemberInfo[] 
 
   return (
     <>
-      <div className="pb-10">
+      <div className="pb-10 text-black">
         <Table className="text-center">
           {/* <TableCaption>A list of your recent invoices.</TableCaption> */}
           <TableHeader className="bg-slate-100">
@@ -91,7 +94,7 @@ export default function TableSection({ memberInfo }: { memberInfo: MemberInfo[] 
         </Table>
 
         {/* 페이징 */}
-        <div>
+        <div className="flex justify-center mt-4">
           <Pagination>
             <PaginationContent>
               {currentPage > 1 && (

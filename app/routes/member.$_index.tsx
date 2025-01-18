@@ -21,8 +21,8 @@ import {
 
 import { Input } from '~/components/ui/input';
 import Layout from '~/components/layout/Layout';
-import type { MemberInfo } from '~/components/member/list/TableSection/MemberInfo';
 import dummyMembers from '~/data/member/list/dummyMembers';
+import MemberRegistration from '~/components/modals/members/MemberRegistration';
 
 export default function Member() {
   // 멤버 검색 api 호출
@@ -52,7 +52,7 @@ export default function Member() {
             <div className="h-10">
               <h4 className="sr-only">select 영역</h4>
               <Select>
-                <SelectTrigger className="w-[180px] h-10 bg-white">
+                <SelectTrigger className="w-[180px] h-10 bg-white text-neutral-500">
                   <SelectValue placeholder="기수 선택" />
                 </SelectTrigger>
                 <SelectContent>
@@ -70,7 +70,7 @@ export default function Member() {
 
               <Input
                 placeholder="이름을 입력해주세요."
-                className="w-full h-10 pr-24 bg-white border-none shadow-none focus-visible:ring-0 focus:ring-transparent focus:outline-none"
+                className="w-full h-10 pr-24 bg-white border-none shadow-none focus-visible:ring-0 focus:ring-transparent focus:outline-none text-black"
               />
               <button
                 type="button"
@@ -87,24 +87,7 @@ export default function Member() {
             <h3 className="sr-only">버튼 영역</h3>
 
             {/* 신규 회원 등록 버튼 */}
-            <AlertDialog>
-              <AlertDialogTrigger className="w-32	h-10 py-2 px-2 rounded-md 	bg-slate-800  text-sm text-white">
-                신규 회원 등록
-              </AlertDialogTrigger>
-              <AlertDialogContent>
-                <AlertDialogHeader>
-                  <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-                  <AlertDialogDescription>
-                    This action cannot be undone. This will permanently delete your account and
-                    remove your data from our servers.
-                  </AlertDialogDescription>
-                </AlertDialogHeader>
-                <AlertDialogFooter>
-                  <AlertDialogCancel>Cancel</AlertDialogCancel>
-                  <AlertDialogAction>Continue</AlertDialogAction>
-                </AlertDialogFooter>
-              </AlertDialogContent>
-            </AlertDialog>
+            <MemberRegistration />
           </div>
         </nav>
         <main className="px-8 ">
