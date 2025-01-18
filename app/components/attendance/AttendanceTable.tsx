@@ -20,21 +20,20 @@ interface AttendanceTableProps {
 
 export default function AttendanceTable({ attendanceData }: AttendanceTableProps) {
   const { mutate } = useMutation({
-    mutationFn: (
+    mutationFn: async (
       data: Pick<AttendanceType, 'term' | 'phase' | 'startTime' | 'lateTime' | 'absenceTime'>,
     ) =>
-      generateQRCode({
-        term: data.term ?? 3,
-        phase: data.phase ?? 1,
-        startTime: data.startTime ?? '25.01.11 14:00',
-        lateTime: data.lateTime ?? '25.01.11 14:10',
-        absenceTime: data.absenceTime ?? '25.01.11 14:30',
+      await generateQRCode({
+        term: 3,
+        phase: 1,
+        startTime: '25.01.11 14:00',
+        lateTime: '25.01.11 14:10',
+        absenceTime: '25.01.11 14:30',
       }),
   });
 
   const handleEditAttendance = (data) => {
     // TODO: API 호출하여 출석 정보 수정
-    console.log('수정된 데이터:', data);
   };
 
   const handleGenerateQrCode = (
@@ -86,7 +85,11 @@ export default function AttendanceTable({ attendanceData }: AttendanceTableProps
             <TableCell className="text-center">
               <QrCodeModal
                 trigger={
-                  <Button variant="ghost" size="icon">
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    onClick={() => handleGenerateQrCode(attendance)}
+                  >
                     <ExternalLinkIcon />
                   </Button>
                 }

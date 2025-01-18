@@ -69,7 +69,7 @@ export default function AttendanceEditFormModal({
       title="출석 정보 수정"
       onConfirm={handleSubmit(handleClickSubmit)}
       onCancel={handleClickCancel}
-      confirmText="생성"
+      confirmText="수정"
       cancelText="취소"
     >
       <div className="flex flex-col gap-4">
@@ -77,7 +77,7 @@ export default function AttendanceEditFormModal({
           <div className="text-gray-500 font-semibold">기수/회차</div>
           <div className="flex items-center gap-2">
             <div>{`${attendance.term}기 ${attendance.phase}회차`}</div>
-            <div className="text-gray-400">{`(25.01.14)`}</div>
+            <div className="text-gray-400">{`(${attendance.date})`}</div>
           </div>
         </div>
         <div className="w-full h-[1px] bg-gray-200" />
@@ -121,9 +121,18 @@ export default function AttendanceEditFormModal({
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
-                      <SelectItem value="1">1회차 (24.01.01)</SelectItem>
-                      <SelectItem value="2">2회차 (25.01.02)</SelectItem>
-                      <SelectItem value="3">3회차 (26.01.03)</SelectItem>
+                      <SelectItem value="1">오후 2시 10분</SelectItem>
+                      <SelectItem value="2">오후 2시 20분</SelectItem>
+                      <SelectItem value="3">오후 2시 30분</SelectItem>
+                      <SelectItem value="4">오후 2시 40분</SelectItem>
+                      <SelectItem value="5">오후 2시 50분</SelectItem>
+                      <SelectItem value="6">오후 3시 00분</SelectItem>
+                      <SelectItem value="7">오후 3시 10분</SelectItem>
+                      <SelectItem value="8">오후 3시 20분</SelectItem>
+                      <SelectItem value="9">오후 3시 30분</SelectItem>
+                      <SelectItem value="10">오후 3시 40분</SelectItem>
+                      <SelectItem value="11">오후 3시 50분</SelectItem>
+                      <SelectItem value="12">오후 4시 00분</SelectItem>
                     </SelectContent>
                   </Select>
                   <FormMessage />
@@ -144,9 +153,16 @@ export default function AttendanceEditFormModal({
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
-                      <SelectItem value="1">1회차 (24.01.01)</SelectItem>
-                      <SelectItem value="2">2회차 (25.01.02)</SelectItem>
-                      <SelectItem value="3">3회차 (26.01.03)</SelectItem>
+                      <SelectItem value="1">오후 2시 30분</SelectItem>
+                      <SelectItem value="2">오후 2시 40분</SelectItem>
+                      <SelectItem value="3">오후 2시 50분</SelectItem>
+                      <SelectItem value="4">오후 3시 00분</SelectItem>
+                      <SelectItem value="5">오후 3시 10분</SelectItem>
+                      <SelectItem value="6">오후 3시 20분</SelectItem>
+                      <SelectItem value="7">오후 3시 30분</SelectItem>
+                      <SelectItem value="8">오후 3시 40분</SelectItem>
+                      <SelectItem value="9">오후 3시 50분</SelectItem>
+                      <SelectItem value="10">오후 4시 00분</SelectItem>
                     </SelectContent>
                   </Select>
                   <FormMessage />
