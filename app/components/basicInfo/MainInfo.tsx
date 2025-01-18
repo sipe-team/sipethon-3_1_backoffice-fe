@@ -1,4 +1,4 @@
-import MainInfoCard from '~/components/dashboard/MainInfoCard';
+import MainInfoCard from '~/components/basicInfo/MainInfoCard';
 
 export default function MainInfo() {
   const mainInfoCards = [

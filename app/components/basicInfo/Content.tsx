@@ -1,4 +1,4 @@
-import { ContentCard } from '~/components/dashboard/ContentCard';
+import { ContentCard } from '~/components/basicInfo/ContentCard';
 
 export default function Content() {
   return (
