@@ -1,8 +1,8 @@
-function SipeMainLogo() {
+function SipeMainLogo({ width = 320, height = 89 }: { width?: number; height?: number }) {
   return (
     <svg
-      width="320"
-      height="89"
+      width={width}
+      height={height}
       viewBox="0 0 320 89"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
