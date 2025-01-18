@@ -18,7 +18,7 @@ const items = [
   },
   {
     title: '회원 관리',
-    url: '/members',
+    url: '/member',
     icon: Inbox,
   },
 ];
