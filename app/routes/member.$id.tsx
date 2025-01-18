@@ -1,5 +1,6 @@
 import 회원제명Modal from '~/components/modals/회원제명Modal';
 import type { Route } from './+types/member.$id';
+import 활동점수 from '~/components/member/attendance-point/활동점수';
 import { Member } from '~/types/member';
 import UserInfo from '~/components/member/user-info/UserInfo';
 
@@ -29,7 +30,7 @@ export default function MemberDetailPage({ params }: Route.ComponentProps) {
       </div>
       <div className="flex w-full gap-4">
         <UserInfo userInfo={dummyUserInfo} />
-        <UserInfo userInfo={dummyUserInfo} />
+        <활동점수 />
       </div>
     </div>
   );
