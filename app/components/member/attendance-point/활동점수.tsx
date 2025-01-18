@@ -55,7 +55,6 @@ const 현재활동점수 = ({ points, maxPoints }: 현재활동점수Props) => {
         <span className="text-slate-800 text-[14px] font-medium">
           {points}점 / {maxPoints}점
         </span>
-        <span>{`(제명까지 ${maxPoints - points}점 남음)`}</span>
       </div>
     </div>
   );
