@@ -17,8 +17,8 @@ function SipeMainLogo() {
         fill="#1E293B"
       />
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M312.563 2.27921H276.241L231.111 44.616L275.875 86.6097H312.197L281.345 57.6671H320V33.5727H279.205L312.563 2.27921Z"
         fill="#1E293B"
       />
