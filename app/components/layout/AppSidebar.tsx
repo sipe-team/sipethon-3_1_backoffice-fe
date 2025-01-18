@@ -1,6 +1,5 @@
 import { ChevronRight, CalendarCheck, FileText, Users } from 'lucide-react';
 
-
 import {
   Sidebar,
   SidebarContent,
@@ -26,11 +25,6 @@ const items = [
     title: '출석 관리',
     url: '/attendance',
     icon: CalendarCheck,
-  },
-  {
-    title: '출석 관리',
-    url: '/attendance',
-    icon: Calendar,
   },
 ];
 
