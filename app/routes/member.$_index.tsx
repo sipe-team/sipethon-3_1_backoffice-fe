@@ -21,7 +21,6 @@ import {
 
 import { Input } from '~/components/ui/input';
 import Layout from '~/components/layout/Layout';
-import type { MemberInfo } from '~/components/member/list/TableSection/MemberInfo';
 import dummyMembers from '~/data/member/list/dummyMembers';
 import MemberRegistration from '~/components/modals/members/MemberRegistration';
 
