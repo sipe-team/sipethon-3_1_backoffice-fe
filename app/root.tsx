@@ -1,7 +1,8 @@
-import type { ReactNode } from 'react';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { type ReactNode } from 'react';
+
 import { Links, Meta, Outlet, Scripts, ScrollRestoration } from 'react-router';
 import '~/app.css';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 export function Layout({ children }: { children: ReactNode }) {
   const queryClient = new QueryClient();

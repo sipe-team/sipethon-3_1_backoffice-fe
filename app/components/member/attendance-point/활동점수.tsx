@@ -5,15 +5,13 @@ import Fire from '~/components/svg/Fire';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '~/components/ui/card';
 import { Select } from '~/components/ui/select';
 import { AttendancePoint, PointHistory } from '~/types/attendance';
-import GreyBox from '../GreyBox';
 
-const dummyPoint: AttendancePoint = {
-  points: 65,
-  maxPoints: 100,
-  pointHistories: [{ phase: 1, date: '25-01-01', type: '출석', point: '10', reason: '결혼식' }],
-};
-export default function 활동점수() {
-  const [selected기수, setSelected기수] = useState('3');
+interface Props {
+  attendancePoint: AttendancePoint;
+  selected기수: string;
+  onChange: (v: string) => void;
+}
+export default function 활동점수({ attendancePoint, selected기수, onChange }: Props) {
   return (
     <Card className="w-full">
       <CardHeader className="w-full">
@@ -23,7 +21,7 @@ export default function 활동점수() {
             <활동점수Select
               value={selected기수}
               onChange={(v) => {
-                setSelected기수(v);
+                onChange(v);
               }}
             />
           </span>
@@ -34,9 +32,9 @@ export default function 활동점수() {
       </CardHeader>
       <CardContent>
         <CardDescription>
-          <현재활동점수 points={dummyPoint.points} maxPoints={dummyPoint.maxPoints} />
+          <현재활동점수 points={attendancePoint.points} maxPoints={attendancePoint.maxPoints} />
         </CardDescription>
-        {dummyPoint.pointHistories.map((pointHistory, i) => (
+        {attendancePoint.pointHistories.map((pointHistory, i) => (
           <출석점수정보 key={i} pointHistory={pointHistory} />
         ))}
       </CardContent>
@@ -57,7 +55,6 @@ const 현재활동점수 = ({ points, maxPoints }: 현재활동점수Props) => {
         <span className="text-slate-800 text-[14px] font-medium">
           {points}점 / {maxPoints}점
         </span>
-        <span>{`(제명까지 ${maxPoints - points}점 남음)`}</span>
       </div>
     </div>
   );

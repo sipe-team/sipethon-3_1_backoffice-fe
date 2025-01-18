@@ -22,12 +22,12 @@ const UserInfo = ({ userInfo }: Props) => {
       <CardContent>
         {userInfo.isDropped && userInfo.reason && (
           <CardDescription>
-            <제명사유 reason={userInfo.reason!} />
+            <제명사유 reason={userInfo.reason} />
           </CardDescription>
         )}
         <div className="flex py-[16px] border-b-[1px] border-b-slate-100">
           <span className="w-[72px] font-semibold text-slate-500 text-[14px]">활동기수</span>
-          <span>
+          <span className="flex gap-[8px]">
             <활동기수List terms={userInfo.termInfo} />
           </span>
         </div>
@@ -55,16 +55,14 @@ const UserInfo = ({ userInfo }: Props) => {
 export default UserInfo;
 
 const 활동기수List = ({ terms }: { terms: Member['termInfo'] }) => {
-  return (
-    <GreyBox>
-      {terms.map((term) => (
-        <span key={term.term} className='text-[14px] text-slate-800"'>
-          {term.term}
-          {term.isStaff ? '기 (운영진)' : ''}
-        </span>
-      ))}
+  return terms.map((term, i) => (
+    <GreyBox key={i}>
+      <span key={term.term} className='text-[14px] text-slate-800"'>
+        {`${term.term}기`}
+        {term.isStaff ? '(운영진)' : ''}
+      </span>
     </GreyBox>
-  );
+  ));
 };
 
 const 제명사유 = ({ reason }: { reason: string }) => {
