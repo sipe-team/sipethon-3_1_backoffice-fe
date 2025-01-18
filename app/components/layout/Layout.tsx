@@ -1,9 +1,15 @@
 import React from 'react';
-import { SidebarInset, SidebarProvider, SidebarTrigger } from '~/components/ui/sidebar';
+import { SidebarInset, SidebarProvider } from '~/components/ui/sidebar';
 import { AppSidebar } from '~/components/layout/AppSidebar';
 import { Navbar } from '~/components/layout/Navbar';
+import BreadCrumb, { BreadCrumbProps } from './BreadCrumb';
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+export type LayoutProps = {
+  breadcrumbs?: BreadCrumbProps['breadcrumbs'];
+  children: React.ReactNode;
+};
+
+export default function Layout({ children, breadcrumbs }: LayoutProps) {
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
@@ -12,10 +18,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <AppSidebar />
           <SidebarInset>
             <main className="flex-1">
-              <div className="p-4">
-                <SidebarTrigger />
-                {children}
-              </div>
+              {breadcrumbs && <BreadCrumb breadcrumbs={breadcrumbs} />}
+              <div className="p-4">{children}</div>
             </main>
           </SidebarInset>
         </SidebarProvider>
