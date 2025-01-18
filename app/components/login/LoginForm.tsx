@@ -1,11 +1,15 @@
+'use client';
+
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
 
 import { Button } from '~/components/ui/button';
 import { Input } from '~/components/ui/input';
+import { useAuthStore } from '~/store/auth';
 
 const LoginForm: React.FC = () => {
   const navigate = useNavigate();
+  const { login } = useAuthStore();
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -24,11 +28,8 @@ const LoginForm: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    // TODO: 인증 로직
-    const isAuthenticated = true;
-    if (isAuthenticated) {
-      navigate('/');
-    }
+    login({ id: 'admin', email: 'admin@sipe.com', name: 'admin', role: 'admin' }, 'session');
+    navigate('/');
   };
 
   return (
