@@ -11,9 +11,9 @@ export type LayoutProps = {
 
 export default function Layout({ children, breadcrumbs }: LayoutProps) {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col w-full">
       <Navbar />
-      <div className="flex-1 flex">
+      <div className="relative">
         <SidebarProvider>
           <AppSidebar />
           <SidebarInset>
