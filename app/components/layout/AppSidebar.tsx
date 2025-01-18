@@ -1,8 +1,8 @@
-import { ChevronRight, Home, Inbox, Settings } from 'lucide-react';
+import { ChevronRight, Home, Inbox } from 'lucide-react';
 
 import {
+  Sidebar,
   SidebarContent,
-  SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
   SidebarMenu,
@@ -25,8 +25,8 @@ const items = [
 
 export function AppSidebar() {
   return (
-    <div className="w-[--sidebar-width] shadow-[0px_4px_4px_0px_#F1F5F9]">
-      <SidebarContent>
+    <Sidebar variant="inset" className="bg-white">
+      <SidebarContent className="bg-white">
         <SidebarGroup className="p-6">
           <SidebarGroupContent>
             <SidebarMenu className="flex flex-col gap-2">
@@ -45,9 +45,6 @@ export function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
-      <SidebarFooter className="p-6">
-        <Settings />
-      </SidebarFooter>
-    </div>
+    </Sidebar>
   );
 }

@@ -1,5 +1,10 @@
 import Dashboard from '~/pages/Dashboard';
+import Layout from '~/components/layout/Layout';
 
 export default function Page() {
-  return <Dashboard />;
+  return (
+    <Layout>
+      <Dashboard />
+    </Layout>
+  );
 }
