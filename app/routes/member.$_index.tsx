@@ -1,34 +1,33 @@
-import TableSection from '~/components/member/list/TableSection/TableSection';
+import { useState } from 'react';
+import axios from 'axios';
 import {
   Select,
-  SelectContent,
-  SelectItem,
   SelectTrigger,
   SelectValue,
+  SelectContent,
+  SelectItem,
 } from '~/components/ui/select';
-
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from '~/components/ui/alert-dialog';
-
 import { Input } from '~/components/ui/input';
+import MemberRegistration from '~/components/modals/members/MemberRegistration';
 import Layout from '~/components/layout/Layout';
 import dummyMembers from '~/data/member/list/dummyMembers';
-import MemberRegistration from '~/components/modals/members/MemberRegistration';
+import TableSection from '~/components/member/list/TableSection/TableSection';
 
 export default function Member() {
-  // 멤버 검색 api 호출
-  const handleSearch = () => {
-    alert('검색 버튼 클릭');
-    // response로 받아오는 데이터를 props로 그대로 넘겨주기
+  const [term, setTerm] = useState('');
+  const [name, setName] = useState('');
+
+  const handleSearch = async () => {
+    const params: { term: number; name?: string } = {
+      term: Number(term),
+    };
+
+    if (name) {
+      params.name = name;
+    }
+
+    const response = await axios.get('http://backoffice.conects.com/api/members', { params });
+    console.log('api 호출 응답 확인: ', response);
   };
 
   return (
@@ -38,12 +37,6 @@ export default function Member() {
         { label: '회원 정보 관리', path: '/member' },
       ]}
     >
-      <header>
-        <h1>헤더</h1>
-      </header>
-      <aside>
-        <div>사이드바 영역</div>
-      </aside>
       <div className="bg-slate-50 ">
         <nav className="flex items-center justify-between px-8 py-6">
           {/* 검색 영역 */}
@@ -51,14 +44,14 @@ export default function Member() {
             <h3 className="sr-only">검색 영역</h3>
             <div className="h-10">
               <h4 className="sr-only">select 영역</h4>
-              <Select>
+              <Select onValueChange={setTerm}>
                 <SelectTrigger className="w-[180px] h-10 bg-white text-neutral-500">
                   <SelectValue placeholder="기수 선택" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="phase1">1기</SelectItem>
-                  <SelectItem value="phase2">2기</SelectItem>
-                  <SelectItem value="phase3">3기</SelectItem>
+                  <SelectItem value="1">1기</SelectItem>
+                  <SelectItem value="2">2기</SelectItem>
+                  <SelectItem value="3">3기</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -67,10 +60,11 @@ export default function Member() {
             <div className="relative flex items-center w-96 bg-white rounded-md overflow-hidden border border-neutral-200">
               <h4 className="sr-only">input 영역</h4>
               <img src="/images/search.svg" alt="검색 아이콘" className="w-6 h-6 ml-2" />
-
               <Input
                 placeholder="이름을 입력해주세요."
                 className="w-full h-10 pr-24 bg-white border-none shadow-none focus-visible:ring-0 focus:ring-transparent focus:outline-none text-black"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
               />
               <button
                 type="button"
