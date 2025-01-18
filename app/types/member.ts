@@ -7,7 +7,7 @@ export interface Member {
   email: string;
   phone: string;
   isDropped: boolean;
-  reasone: string;
+  reason?: string;
 }
 
 export interface TermInfo {
