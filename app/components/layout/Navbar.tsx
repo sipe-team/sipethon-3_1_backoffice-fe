@@ -1,3 +1,4 @@
+import React from 'react';
 import { cn } from '~/lib/utils';
 import SipeMainLogo from '../svg/SipeMainLogo';
 import UserProfile from './UserProfile';
