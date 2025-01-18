@@ -31,7 +31,7 @@ export default function MemberDetailPage({ params }: Route.ComponentProps) {
         { label: '이지원', path: `/member/${params.id}` },
       ]}
     >
-      <div>
+      <div className="p-[24px]">
         <div className="flex justify-between mb-4">
           <span className="text-[24px] font-medium text-slate-800">{dummyUserInfo.name}</span>
           <회원제명Modal id={Number(params.id)} userName={dummyUserInfo.name} />
