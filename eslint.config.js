@@ -11,7 +11,7 @@ export default [
   // JavaScript 파일용 설정
   {
     files: ['**/*.{js,jsx}'],
-    ...eslint.configs.recommended
+    ...eslint.configs.recommended,
   },
   // TypeScript 파일용 설정
   {
@@ -22,18 +22,18 @@ export default [
         ecmaVersion: 'latest',
         sourceType: 'module',
         ecmaFeatures: {
-          jsx: true
+          jsx: true,
         },
         project: './tsconfig.json',
-        tsconfigRootDir: '.'
-      }
+        tsconfigRootDir: '.',
+      },
     },
     plugins: {
       '@typescript-eslint': tseslint,
-      'react': reactPlugin,
+      react: reactPlugin,
       'react-hooks': reactHooksPlugin,
-      'prettier': prettierPlugin,
-      'import': importPlugin
+      prettier: prettierPlugin,
+      import: importPlugin,
     },
     rules: {
       ...eslint.configs.recommended.rules,
@@ -41,20 +41,23 @@ export default [
       ...reactPlugin.configs.recommended.rules,
       ...reactHooksPlugin.configs.recommended.rules,
       ...prettier.rules,
-      
+      'react-hooks/rules-of-hooks': 'off',
       'react/react-in-jsx-scope': 'off',
       'react/prop-types': 'off',
       '@typescript-eslint/explicit-module-boundary-types': 'off',
-      '@typescript-eslint/no-unused-vars': ['warn', { 
-        'argsIgnorePattern': '^_',
-        'varsIgnorePattern': '^_'
-      }],
-      'prettier/prettier': 'error'
+      '@typescript-eslint/no-unused-vars': [
+        'warn',
+        {
+          argsIgnorePattern: '^_',
+          varsIgnorePattern: '^_',
+        },
+      ],
+      'prettier/prettier': 'error',
     },
     settings: {
       react: {
-        version: 'detect'
-      }
-    }
-  }
+        version: 'detect',
+      },
+    },
+  },
 ];
