@@ -3,9 +3,7 @@ import { cn } from '~/lib/utils';
 import SipeMainLogo from '../svg/SipeMainLogo';
 import UserProfile from './UserProfile';
 
-interface NavbarProps extends React.HTMLAttributes<HTMLElement> {}
-
-export function Navbar({ ...props }: NavbarProps) {
+export function Navbar({ ...props }: React.HTMLAttributes<HTMLElement>) {
   return (
     <nav
       className={cn(
