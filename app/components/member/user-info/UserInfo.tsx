@@ -59,8 +59,8 @@ const 활동기수List = ({ terms }: { terms: Member['termInfo'] }) => {
     <GreyBox>
       {terms.map((term) => (
         <span key={term.term} className='text-[14px] text-slate-800"'>
-          {term.term}
-          {term.isStaff ? '기 (운영진)' : ''}
+          {`${term.term}기`}
+          {term.isStaff ? '(운영진)' : ''}
         </span>
       ))}
     </GreyBox>

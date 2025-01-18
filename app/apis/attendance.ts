@@ -10,7 +10,6 @@ import {
 
 const http = axios.create({
   baseURL: 'https://backoffice.conects.com',
-  withCredentials: true,
 });
 
 export const getAttendancePointList = async ({ term, memberId }: AttendancePointRequest) => {

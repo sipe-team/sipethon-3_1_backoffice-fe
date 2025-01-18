@@ -3,7 +3,6 @@ import type { DeleteMemberRequest, Member, UpdateMemberRequest } from '~/types/m
 
 const http = axios.create({
   baseURL: 'https://backoffice.conects.com',
-  withCredentials: true,
 });
 
 export const getMemberDetail = async (id: number) => {
